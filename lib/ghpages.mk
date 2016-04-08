@@ -52,7 +52,7 @@ endif
 ifneq (,$(TARGET_DIR))
 	mkdir -p $(CURDIR)/$(TARGET_DIR)
 endif
-	mv -f $(GHPAGES_TMP)/* $(CURDIR)/$(TARGET_DIR)
+	cp -R $(GHPAGES_TMP)/* $(CURDIR)/$(TARGET_DIR)
 	git add -f $(addprefix $(TARGET_DIR),$^)
 	if test `git status --porcelain | grep '^[A-Z]' | wc -l` -gt 0; then \
 	  git commit -m "Script updating gh-pages. [ci skip]"; fi
