@@ -27,7 +27,7 @@ endif
 endif
 
 .PHONY: ghpages
-ghpages: index.html
+ghpages: index.html img
 ifneq (true,$(CI))
 	@git show-ref refs/heads/gh-pages >/dev/null 2>&1 || \
 	  (git show-ref refs/remotes/origin/gh-pages >/dev/null 2>&1 && \
@@ -36,7 +36,7 @@ ifneq (true,$(CI))
 endif
 ifeq (true,$(PUSH_GHPAGES))
 	mkdir $(GHPAGES_TMP)
-	cp -f $^ $(GHPAGES_TMP)
+	cp -R $^ $(GHPAGES_TMP)
 	git clean -qfdX
 ifeq (true,$(CI))
 	git config user.email "ci-bot@example.com"
