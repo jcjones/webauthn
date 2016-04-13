@@ -26,6 +26,8 @@ PUSH_GHPAGES := true
 endif
 endif
 
+echo "CI = $(CI) || CI_IS_PR = $(CI_IS_PR) || CI_PULL_REQUESTS = $(CI_PULL_REQUESTS)"
+
 .PHONY: ghpages
 ghpages: index.html img
 ifneq (true,$(CI))
