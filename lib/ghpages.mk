@@ -26,10 +26,9 @@ PUSH_GHPAGES := true
 endif
 endif
 
-echo "CI = $(CI) || CI_IS_PR = $(CI_IS_PR) || CI_PULL_REQUESTS = $(CI_PULL_REQUESTS)"
-
 .PHONY: ghpages
 ghpages: index.html img
+  echo "CI = $(CI) || CI_IS_PR = $(CI_IS_PR) || CI_PULL_REQUESTS = $(CI_PULL_REQUESTS)"
 ifneq (true,$(CI))
 	@git show-ref refs/heads/gh-pages >/dev/null 2>&1 || \
 	  (git show-ref refs/remotes/origin/gh-pages >/dev/null 2>&1 && \
